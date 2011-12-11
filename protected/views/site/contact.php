@@ -79,3 +79,14 @@ If you have business inquiries or other questions, please fill out the following
 </div><!-- form -->
 
 <?php endif; ?>
+
+<?php $this->widget('ListaWidget',
+        array(
+            'model'=>$model,
+            'show_field'=>
+                array(
+                   'id','contactenar',
+                ),
+             ''=>'', 
+            )
+        ); ?>

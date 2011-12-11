@@ -13,9 +13,12 @@ return array(
 	'preload'=>array('log'),
 
 	// autoloading model and component classes
-	'import'=>array(
-		'application.models.*',
+	'import' => array(
+		'application.models.*',		
 		'application.components.*',
+         	'application.components.widgets.*',
+		
+		
 	),
 
 	'modules'=>array(

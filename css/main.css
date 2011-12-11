@@ -227,3 +227,13 @@ div.search-form
 {
 	background: #80CFFF;
 }
+
+#lista_datos{
+    width: 200px;  
+    border: 1px solid #ffffff;
+    
+}
+
+#lista_datos ul{
+    list-style: none;
+}
