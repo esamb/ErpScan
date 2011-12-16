@@ -39,9 +39,8 @@ class ListaWidget extends CWidget {
         
         public $parametros_busqueda=array();
         
-        public static $datos_per_page=10;
         
-        public $set_actual=1;
+        public $data;
 	
 	public function init() {
 		parent::init();
@@ -50,6 +49,29 @@ class ListaWidget extends CWidget {
 	public function run() {
                 parent::run();
             
+                if($this->pagina_actual!=1) 
+                    $this->offset=(int)$this->limit*(int)$this->pagina_actual;
+                
+                
+                if(is_object($this->model))
+                    return '';
+                
+                /*
+                 * Busca los datos dependiendo d
+                 */
+                
+                $criteria = new CDbCriteria;
+                $criteria->select = $this->show_field;
+//                $criteria->order = 'foreign_table3.col5 DESC';
+                $criteria->limit = $this->limit;
+                $criteria->offset = $this->offset;
+                $options = array('criteria' => $criteria);
+                $provider=CActiveDataProvider($model::model(), $options);
+//                $provider=$this->model->search();
+//                $data=array(
+//                    'provider'=>$provider,
+//                    
+//                );
         	$this->render('lista_view', $model);
 	}
 
