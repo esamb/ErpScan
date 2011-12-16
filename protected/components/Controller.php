@@ -20,4 +20,53 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+
+
+
+
+        /**
+	 * Adiciona valores al contexto "flash" por clave. Shortcut para el método más largo
+	 * @param string $key nombre de la clave
+	 * @param mixed $value Valor para adicional
+	 */
+	public function addFlash($key, $value) {
+		Yii::app()->user->setFlash($key, $value);
+	}
+
+	/**
+	 * Recupera valores del contexto "flash" por clave usando un valor por defecto también.
+	 * Simple shortcut para la llamada más larga.
+	 * @param string $key Clave del contexto flash
+	 * @param mixed $defaultValue Valor por defecto si no se encuentra
+	 */
+	public function getFlash($key, $defaultValue = '') {
+		return Yii::app()->user->getFlash($key, $defaultValue);
+	}
+
+	/**
+	 * Determina si la petición se hace por ajax usando el método del objeto Request
+	 * @return bool
+	 */
+	public function getIsAjaxRequest() {
+		return Yii::app()->getRequest()->getIsAjaxRequest();
+	}
+
+	/**
+	 * Determina si la petición se hace por POST
+	 * @return bool
+	 */
+	public function getIsPost() {
+		return Yii::app()->getRequest()->getIsPostRequest();
+	}
+
+	/**
+	 * Shortcut para recuperar parámetros desde el request
+	 * @param string $nombre
+	 * @param mixed $default Valor por defecto si no se encuentra, default null
+	 * @return mixed
+	 */
+	public function getParam($nombre, $default=null) {
+		return Yii::app()->request->getParam($nombre, $default);
+	}
+
 }
